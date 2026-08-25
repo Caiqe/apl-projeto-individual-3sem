@@ -4,13 +4,28 @@ public class Filme {
 
     private Integer idFilme;
     private String titulo;
+    private String descricao;
+    private String diretor;
+    private String url;
     private Integer fkGenero;
 
     public Filme(){}
 
-    public Filme( String titulo, Integer fk_genero) {
+    public Filme(Integer idFilme, String titulo, String descricao, String diretor, String url, Integer fkGenero) {
+        this.idFilme = idFilme;
         this.titulo = titulo;
-        this.fkGenero = fk_genero;
+        this.descricao = descricao;
+        this.diretor = diretor;
+        this.url = url;
+        this.fkGenero = fkGenero;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 
     public Integer getIdFilme() {
@@ -23,6 +38,22 @@ public class Filme {
 
     public String getTitulo() {
         return titulo;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
+    public String getDiretor() {
+        return diretor;
+    }
+
+    public void setDiretor(String diretor) {
+        this.diretor = diretor;
     }
 
     public void setTitulo(String titulo) {
