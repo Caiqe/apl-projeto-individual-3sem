@@ -31,10 +31,21 @@ public class FilmeController {
         return ResponseEntity.status(200).body(filmes);
     }
 
-    @GetMapping("/{titulo}")
+    @GetMapping("/buscar/{titulo}")
     public ResponseEntity<List<Filme>> buscaPorTitulo(@PathVariable String titulo){
         String sql = "SELECT * FROM filme WHERE LOWER(titulo) LIKE ?";
         List<Filme> filmes = template.query(sql, new BeanPropertyRowMapper<>(Filme.class), "%"+titulo.toLowerCase()+"%");
+
+        if(filmes.size()<1){
+            return ResponseEntity.status(404).build();
+        }
+        return ResponseEntity.status(200).body(filmes);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<List<Filme>> buscaPorId(@PathVariable Integer id){
+        String sql = "SELECT * FROM filme WHERE id_filme = ?";
+        List<Filme> filmes = template.query(sql, new BeanPropertyRowMapper<>(Filme.class), id);
 
         if(filmes.size()<1){
             return ResponseEntity.status(404).build();

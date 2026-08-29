@@ -1,0 +1,153 @@
+{
+  "info": {
+    "name": "projeto-individual",
+    "description": null,
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "filmes",
+      "item": [
+        {
+          "name": "cadastrar-filme",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "description": "",
+            "url": {
+              "raw": "localhost:8080/filmes",
+              "protocol": "",
+              "host": [
+                "localhost:8080"
+              ],
+              "path": [
+                "filmes"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"titulo\": \"Madagascar\",\n    \"descricao\": \"Animais fogem de um zoológico e param em uma ilha\",\n    \"diretor\": \"Caique\",\n    \"url\": \"https://example.com/duro-de-matar.jpg\",\n    \"fkGenero\": 1\n  }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "delete-por-id",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "description": "",
+            "url": {
+              "raw": "localhost:8080/filmes/5",
+              "protocol": "",
+              "host": [
+                "localhost:8080"
+              ],
+              "path": [
+                "filmes",
+                "5"
+              ],
+              "query": [],
+              "variable": []
+            }
+          }
+        },
+        {
+          "name": "listar-por-titulo",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "description": "",
+            "url": {
+              "raw": "localhost:8080/filmes/buscar/matar",
+              "protocol": "",
+              "host": [
+                "localhost:8080"
+              ],
+              "path": [
+                "filmes",
+                "buscar",
+                "matar"
+              ],
+              "query": [],
+              "variable": []
+            }
+          }
+        },
+        {
+          "name": "listar-todos",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "description": "",
+            "url": {
+              "raw": "localhost:8080/filmes",
+              "protocol": "",
+              "host": [
+                "localhost:8080"
+              ],
+              "path": [
+                "filmes"
+              ],
+              "query": [],
+              "variable": []
+            }
+          }
+        },
+        {
+          "name": "listar-por-id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "description": "",
+            "url": {
+              "raw": "localhost:8080/filmes/1",
+              "protocol": "",
+              "host": [
+                "localhost:8080"
+              ],
+              "path": [
+                "filmes",
+                "1"
+              ],
+              "query": [],
+              "variable": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "generos",
+      "item": [
+        {
+          "name": "listar-generos",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "description": "",
+            "url": {
+              "raw": "localhost:8080/generos",
+              "protocol": "",
+              "host": [
+                "localhost:8080"
+              ],
+              "path": [
+                "generos"
+              ],
+              "query": [],
+              "variable": []
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "variable": []
+}
