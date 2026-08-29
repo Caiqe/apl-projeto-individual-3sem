@@ -1,0 +1,54 @@
+:root {
+  --cor-primaria: #71A9F7;
+  --cor-secundaria: #6B5CA5;
+  --cor-terciaria: #C6D8FF;
+  --cor-background: #D8E8FD;
+}
+
+*{
+    margin-top: 0;
+    margin-left: 0;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.card{
+    background-color: var(--cor-background);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 90%;
+    max-height: 18rem;
+    max-width: 18rem;
+    padding: 1rem;
+    border-radius: 8px;
+    
+}
+
+.apresentacao{
+    display: flex;
+    flex-direction: row;
+}
+
+.capa{
+    width: 15rem;
+    max-width: 95%;
+}
+
+.titulo{
+    font-size: 1rem;
+    text-decoration: underline;
+    justify-self: flex-start;
+    align-self: flex-start;
+    margin-bottom: .5rem;
+}
+h4, p{
+    font-size: .8rem;
+}
+
+.infos{
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}

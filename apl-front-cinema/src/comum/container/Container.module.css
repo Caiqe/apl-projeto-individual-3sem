@@ -1,0 +1,15 @@
+:root {
+  --cor-primaria: #71A9F7;
+  --cor-secundaria: #6B5CA5;
+  --cor-terciaria: #C6D8FF;
+  --cor-background: #D8E8FD;
+}
+
+.container{
+    margin: 0 auto;
+    padding: 0;
+    flex-direction: column;
+    gap: 20px;
+    width: 95%;
+
+}

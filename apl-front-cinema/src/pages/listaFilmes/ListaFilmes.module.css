@@ -1,0 +1,41 @@
+:root {
+  --cor-primaria: #71A9F7;
+  --cor-secundaria: #6B5CA5;
+  --cor-terciaria: #C6D8FF;
+  --cor-background: #D8E8FD;
+}
+
+.corpo{
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.secao_pesquisa{
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+
+}
+
+.label_pesquisa{
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.barra_pesquisa{
+    width: 90%;
+    height: 2rem;
+    max-width: 25rem;
+    border: none;
+    border-bottom: 2px solid var(--cor-secundaria);
+
+}
+
+.lista{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+}
