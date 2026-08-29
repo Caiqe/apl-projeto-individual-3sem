@@ -28,7 +28,7 @@
             },
             "body": {
               "mode": "raw",
-              "raw": "{\n    \"titulo\": \"Madagascar\",\n    \"descricao\": \"Animais fogem de um zoológico e param em uma ilha\",\n    \"diretor\": \"Caique\",\n    \"url\": \"https://example.com/duro-de-matar.jpg\",\n    \"fkGenero\": 1\n  }",
+              "raw": "{\n    \"titulo\": \"Madagascar\",\n    \"descricao\": \"Animais fogem de um zoológico e param em uma ilha\",\n    \"diretor\": \"Caique\",\n    \"url\": \"https://example.com/madagascar.jpg\",\n    \"fkGenero\": 1,\n    \"genero\": \"Ação\"\n  }",
               "options": {
                 "raw": {
                   "language": "json"

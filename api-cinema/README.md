@@ -110,14 +110,15 @@ public class Genero {
 
 ### Filme
 
-| Campo      | Tipo    | Descrição                                      |
-|------------|---------|--------------------------------------------------|
-| idFilme    | Integer | Identificador único (PK)                        |
-| titulo     | String  | Título do filme (único, mínimo 3 caracteres)    |
-| descricao  | String  | Descrição do filme (3 a 150 caracteres)         |
-| diretor    | String  | Nome do diretor (3 a 60 caracteres)             |
-| url        | String  | URL da imagem/pôster (3 a 250 caracteres)       |
-| fkGenero   | Integer | Chave estrangeira referenciando `genero`        |
+| Campo     | Tipo    | Descrição                                    |
+|-----------|---------|----------------------------------------------|
+| idFilme   | Integer | Identificador único (PK)                     |
+| titulo    | String  | Título do filme (único, mínimo 3 caracteres) |
+| descricao | String  | Descrição do filme (3 a 150 caracteres)      |
+| diretor   | String  | Nome do diretor (3 a 60 caracteres)          |
+| url       | String  | URL da imagem/pôster (3 a 250 caracteres)    |
+| fkGenero  | Integer | Chave estrangeira referenciando `genero`     |
+| genero    | String  | Nome do genêro associado                     |
 
 ```java
 public class Filme {
@@ -127,6 +128,7 @@ public class Filme {
     private String diretor;
     private String url;
     private Integer fkGenero;
+    private String genero;
     // construtores, getters e setters
 }
 ```
@@ -190,7 +192,8 @@ GET http://localhost:8080/filmes
     "descricao": "Um policial nova-iorquino enfrenta terroristas em um arranha-céu de Los Angeles.",
     "diretor": "John McTiernan",
     "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQWBop024mKDaxixTIfdayRjxyqobNUV5v4w4CuXgro0A&s=10",
-    "fkGenero": 1
+    "fkGenero": 1,
+    "genero": "Ação"
   },
   {
     "idFilme": 2,
@@ -198,7 +201,8 @@ GET http://localhost:8080/filmes
     "descricao": "Em um deserto pós-apocalíptico, Max se junta a Furiosa para escapar de um tirano.",
     "diretor": "George Miller",
     "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3Te-rIpOlbjxGDO0h3kNH0AOIUQX0lDDLdNDWLAHGjA&s=10",
-    "fkGenero": 1
+    "fkGenero": 1,
+    "genero": "Ação"
   }
 ]
 ```
@@ -229,7 +233,8 @@ GET http://localhost:8080/filmes/buscar/matar
     "descricao": "Um policial nova-iorquino enfrenta terroristas em um arranha-céu de Los Angeles.",
     "diretor": "John McTiernan",
     "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQWBop024mKDaxixTIfdayRjxyqobNUV5v4w4CuXgro0A&s=10",
-    "fkGenero": 1
+    "fkGenero": 1,
+    "genero": "Ação"
   }
 ]
 ```
@@ -265,7 +270,8 @@ GET http://localhost:8080/filmes/1
     "descricao": "Um policial nova-iorquino enfrenta terroristas em um arranha-céu de Los Angeles.",
     "diretor": "John McTiernan",
     "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQWBop024mKDaxixTIfdayRjxyqobNUV5v4w4CuXgro0A&s=10",
-    "fkGenero": 1
+    "fkGenero": 1,
+    "genero": "Ação"
   }
 ]
 ```
@@ -279,13 +285,14 @@ GET http://localhost:8080/filmes/1
 - **Formato da requisição:** JSON no corpo (`raw`)
 - **Parâmetros do corpo:**
 
-| Campo      | Tipo    | Obrigatório | Validações                                           |
-|------------|---------|:-----------:|-------------------------------------------------------|
-| titulo     | String  | Sim          | Não vazio, mínimo 3 caracteres, deve ser único        |
-| descricao  | String  | Sim          | Não vazia, entre 3 e 150 caracteres                   |
-| diretor    | String  | Sim          | Não vazio, entre 3 e 60 caracteres                    |
-| url        | String  | Sim          | Não vazia, entre 3 e 250 caracteres                   |
-| fkGenero   | Integer | Sim          | Deve corresponder a um `id_genero` existente          |
+| Campo     | Tipo    | Obrigatório | Validações                                     |
+|-----------|---------|:-----------:|------------------------------------------------|
+| titulo    | String  | Sim          | Não vazio, mínimo 3 caracteres, deve ser único |
+| descricao | String  | Sim          | Não vazia, entre 3 e 150 caracteres            |
+| diretor   | String  | Sim          | Não vazio, entre 3 e 60 caracteres             |
+| url       | String  | Sim          | Não vazia, entre 3 e 250 caracteres            |
+| fkGenero  | Integer | Sim          | Deve corresponder a um `id_genero` existente   |
+| genero    | String  | Sim          | Não vazio, entre 3                             |
 
 - **Respostas:**
   - `201 Created` — filme cadastrado com sucesso
@@ -301,8 +308,9 @@ Content-Type: application/json
   "titulo": "Madagascar",
   "descricao": "Animais fogem de um zoológico e param em uma ilha",
   "diretor": "Caique",
-  "url": "https://example.com/duro-de-matar.jpg",
-  "fkGenero": 1
+  "url": "https://example.com/madagascar.jpg",
+  "fkGenero": 1,
+  "genero": "Ação"
 }
 ```
 
@@ -314,7 +322,8 @@ Content-Type: application/json
   "descricao": "Animais fogem de um zoológico e param em uma ilha",
   "diretor": "Caique",
   "url": "https://example.com/duro-de-matar.jpg",
-  "fkGenero": 1
+  "fkGenero": 1,
+  "genero": "Ação"
 }
 ```
 

@@ -25,7 +25,7 @@ public class FilmeController {
 
     @GetMapping()
     public ResponseEntity<List<Filme>> listarFilmes(){
-        String sql = "SELECT * FROM filme;";
+        String sql = "SELECT f.*, g.nome as genero FROM filme f JOIN genero g ON f.fk_genero = g.id_genero;";
         List<Filme> filmes = template.query(sql, new BeanPropertyRowMapper<>(Filme.class));
 
         return ResponseEntity.status(200).body(filmes);
@@ -33,7 +33,7 @@ public class FilmeController {
 
     @GetMapping("/buscar/{titulo}")
     public ResponseEntity<List<Filme>> buscaPorTitulo(@PathVariable String titulo){
-        String sql = "SELECT * FROM filme WHERE LOWER(titulo) LIKE ?";
+        String sql = "SELECT f.*, g.nome as genero FROM filme f JOIN genero g ON f.fk_genero = g.id_genero WHERE LOWER(titulo) LIKE ?";
         List<Filme> filmes = template.query(sql, new BeanPropertyRowMapper<>(Filme.class), "%"+titulo.toLowerCase()+"%");
 
         if(filmes.size()<1){
@@ -44,7 +44,7 @@ public class FilmeController {
 
     @GetMapping("/{id}")
     public ResponseEntity<List<Filme>> buscaPorId(@PathVariable Integer id){
-        String sql = "SELECT * FROM filme WHERE id_filme = ?";
+        String sql = "SELECT f.*, g.nome as genero FROM filme f JOIN genero g ON f.fk_genero = g.id_genero WHERE id_filme = ?";
         List<Filme> filmes = template.query(sql, new BeanPropertyRowMapper<>(Filme.class), id);
 
         if(filmes.size()<1){
@@ -75,6 +75,11 @@ public class FilmeController {
         if(filme.getTitulo().isBlank()
                 || filme.getTitulo().length()<3
                 || titulosExistentes.contains(filme.getTitulo())){
+            return ResponseEntity.status(400).build();
+        }
+
+        if(filme.getGenero().isBlank()
+                || filme.getGenero().length()<3){
             return ResponseEntity.status(400).build();
         }
 

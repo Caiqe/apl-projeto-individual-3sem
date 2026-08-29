@@ -13,7 +13,6 @@ CREATE TABLE IF NOT EXISTS filme (
     url VARCHAR(250) NOT NULL,
     fk_genero INT NOT NULL,
     FOREIGN KEY (fk_genero) REFERENCES genero(id_genero)
-
 );
 
 INSERT INTO genero (nome) VALUES ('Ação');

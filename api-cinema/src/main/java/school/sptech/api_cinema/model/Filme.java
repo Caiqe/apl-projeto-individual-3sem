@@ -8,16 +8,26 @@ public class Filme {
     private String diretor;
     private String url;
     private Integer fkGenero;
+    private String genero;
 
     public Filme(){}
 
-    public Filme(Integer idFilme, String titulo, String descricao, String diretor, String url, Integer fkGenero) {
+    public Filme(Integer idFilme, String titulo, String descricao, String diretor, String url, Integer fkGenero, String genero) {
         this.idFilme = idFilme;
         this.titulo = titulo;
         this.descricao = descricao;
         this.diretor = diretor;
         this.url = url;
         this.fkGenero = fkGenero;
+        this.genero = genero;
+    }
+
+    public String getGenero() {
+        return genero;
+    }
+
+    public void setGenero(String genero) {
+        this.genero = genero;
     }
 
     public String getUrl() {
