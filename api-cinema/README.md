@@ -309,8 +309,7 @@ Content-Type: application/json
   "descricao": "Animais fogem de um zoológico e param em uma ilha",
   "diretor": "Caique",
   "url": "https://example.com/madagascar.jpg",
-  "fkGenero": 1,
-  "genero": "Ação"
+  "fkGenero": 1
 }
 ```
 
@@ -322,8 +321,7 @@ Content-Type: application/json
   "descricao": "Animais fogem de um zoológico e param em uma ilha",
   "diretor": "Caique",
   "url": "https://example.com/duro-de-matar.jpg",
-  "fkGenero": 1,
-  "genero": "Ação"
+  "fkGenero": 1
 }
 ```
 
