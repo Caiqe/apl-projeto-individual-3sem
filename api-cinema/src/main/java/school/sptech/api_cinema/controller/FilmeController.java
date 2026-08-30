@@ -73,8 +73,10 @@ public class FilmeController {
 
 
         if(filme.getTitulo().isBlank()
-                || filme.getTitulo().length()<3
-                || titulosExistentes.contains(filme.getTitulo())){
+                || filme.getTitulo().length()<3){
+            if(titulosExistentes.contains(filme.getTitulo())){
+                return ResponseEntity.status(409).build();
+            }
             return ResponseEntity.status(400).build();
         }
 
