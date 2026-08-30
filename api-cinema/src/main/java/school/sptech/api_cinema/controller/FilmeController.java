@@ -78,11 +78,6 @@ public class FilmeController {
             return ResponseEntity.status(400).build();
         }
 
-        if(filme.getGenero().isBlank()
-                || filme.getGenero().length()<3){
-            return ResponseEntity.status(400).build();
-        }
-
         if(filme.getDescricao().isBlank()
             || filme.getDescricao().length() < 3
             || filme.getDescricao().length() >150){
