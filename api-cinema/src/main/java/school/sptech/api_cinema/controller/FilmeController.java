@@ -71,12 +71,12 @@ public class FilmeController {
         String sqlTitulosFilmes = "SELECT titulo FROM filme;";
         List<String> titulosExistentes = template.queryForList(sqlTitulosFilmes, String.class);
 
+        if(titulosExistentes.contains(filme.getTitulo())){
+            return ResponseEntity.status(409).build();
+        }
 
         if(filme.getTitulo().isBlank()
                 || filme.getTitulo().length()<3){
-            if(titulosExistentes.contains(filme.getTitulo())){
-                return ResponseEntity.status(409).build();
-            }
             return ResponseEntity.status(400).build();
         }
 
