@@ -80,6 +80,7 @@ export function FormularioCadastro(props){
         }).then(response =>{
             setEstaCadastrando(false);
             props.mostrarErro("")
+            props.mostrarSucesso("Filme cadastrado com sucesso.")
             limparCampos()
             console.log("Cadastro com sucesso.")
         }).catch(error =>{
@@ -88,6 +89,7 @@ export function FormularioCadastro(props){
                 props.mostrarErro("Já existe um filme cadastrado com esse título.")
                 console.log("Erro ao cadastrar (Filmes existente).", error);
             }
+            props.mostrarSucesso("")
             console.log("Erro ao cadastrar.", error);
         })
         }, 1000)

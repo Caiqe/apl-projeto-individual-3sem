@@ -2,10 +2,15 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { CardFilme } from "../../components/cardFilme/CardFilme";
 import styles from "./ListaFilmes.module.css"
+import { Link } from "react-router-dom";
+import { Modal } from "../../components/modal/Modal";
 
 export function ListaFilmes(){
     
-    const [filmes, setFilmes] = useState([{}]);
+    const[filmes, setFilmes] = useState([{}]);
+    const[filmeSelecionado, setFilmeSelecionado] = useState();
+
+    const[exibirModal, setExibirModal] = useState(false);
 
     
     function buscarFilmes(){
@@ -36,6 +41,30 @@ export function ListaFilmes(){
         })
     }
 
+    function abrirModal(id){
+        setFilmeSelecionado(id);
+        setExibirModal(true);
+    }
+
+    function fecharModal(){
+        setExibirModal(false);
+        setFilmeSelecionado(null)
+    }
+
+    function deletar( id ){
+
+        axios.delete("http://localhost:8080/filmes/"+id)
+        .then(response => {
+            console.log("Deletado com sucesso.")
+            fecharModal()
+            buscarFilmes();
+        }).catch(error =>{
+            console.log("Erro ao deletar")
+            fecharModal()
+        })
+
+    }
+
     useEffect(() => {
         buscarFilmes();
     }, []);
@@ -43,6 +72,7 @@ export function ListaFilmes(){
     return (
 
         <main class={styles.corpo}>
+            <Link class={styles.link} to="/cadastro">{ "< Cadastrar"}</Link>
             <h2>Filmes encontrados ({filmes.length}): </h2>
             <div class={styles.secao_pesquisa}>
                 <label class={styles.label_pesquisa} htmlFor="barra_pesquisa">Buscar Títulos:</label>
@@ -50,9 +80,20 @@ export function ListaFilmes(){
             </div>
             <div class={styles.lista}>
                 { filmes.length > 0 ? 
-                filmes.map(filme => <CardFilme titulo={filme.titulo} descricao={filme.descricao} autor={filme.diretor} genero={filme.genero} imagem={filme.url}></CardFilme>) 
+                filmes.map(filme => <CardFilme id={filme.idFilme} funcDeletar={abrirModal} titulo={filme.titulo} descricao={filme.descricao} autor={filme.diretor} genero={filme.genero} imagem={filme.url}></CardFilme>) 
                 : <h4>Nenhum filme encontrado...</h4>}
             </div>
+            {!exibirModal ? "" : 
+                <Modal 
+                    titulo={"Deletar Filme:"} 
+                    mensagem={"Tem certeza que deseja deletar esse filme?"}
+                    acaoTexto={"Deletar"}
+                    fechar={fecharModal}
+                    acao={deletar}
+                    params={filmeSelecionado}
+                    tituloFilme={filmes.filter(filme => filme.idFilme == filmeSelecionado ).map(filme=> filme.titulo)}
+                ></Modal>
+            }
         </main>
     );
 }

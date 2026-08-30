@@ -3,7 +3,7 @@
     gap: 32px;
 }
 
-.titulo, .mensagemErro{
+.titulo, .mensagemErro, .mensagemSucesso{
     text-align: center;
     margin: 16px auto;
     max-width: 20rem;
@@ -17,4 +17,19 @@
     font-weight: 600;
     color:rgb(160, 41, 41);
     background-color: rgb(235, 202, 67);
+}
+
+.mensagemSucesso{
+    padding: 4px;
+    border: solid, 2px rgb(21, 122, 32);
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    background-color: rgb(40, 174, 75);
+}
+
+.link{
+    text-decoration: none;
+    font-weight: 700;
+    color: black;
 }

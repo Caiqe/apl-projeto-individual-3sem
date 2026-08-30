@@ -14,6 +14,7 @@ export function CardFilme(props){
                     <p>{props.descricao}</p>
                 </div>
             </div>
+            <button class={styles.bttDeletar} onClick={()=> {props.funcDeletar(props.id)}}>Deletar</button>
         </div>
     
     );
