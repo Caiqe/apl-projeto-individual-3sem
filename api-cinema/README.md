@@ -156,7 +156,8 @@ http://localhost:8080
 ## Como testar (Bruno)
 
 1. Instale o [Bruno](https://www.usebruno.com/).
-2. Abra a coleção do projeto (`projeto-individual`) no Bruno.
+2. Abra a coleção do projeto [projeto-individual](https://github.com/Caiqe/apl-projeto-individual-3sem/blob/main/api-cinema/projeto-individual.json)
+ no Bruno.
 3. Certifique-se de que a aplicação está rodando em `localhost:8080`.
 4. Execute as requisições disponíveis na coleção:
    - **filmes**: cadastrar-filme, delete-por-id, listar-por-titulo, listar-todos, listar-por-id
@@ -398,6 +399,8 @@ GET http://localhost:8080/generos
 | 204    | No Content             | Remoção de filme bem-sucedida (`DELETE /filmes/{id}`)                    |
 | 400    | Bad Request            | Dados inválidos no cadastro de filme                                     |
 | 404    | Not Found              | Filme não encontrado (por id, título ou ao tentar deletar)               |
+| 409    | Conflict               | Filme já cadastrado com o mesmo título                                   |
+
 
 ---
 
