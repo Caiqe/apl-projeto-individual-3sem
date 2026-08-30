@@ -1,0 +1,20 @@
+.corpo{
+    padding: 0px;
+    gap: 32px;
+}
+
+.titulo, .mensagemErro{
+    text-align: center;
+    margin: 16px auto;
+    max-width: 20rem;
+}
+
+.mensagemErro{
+    padding: 4px;
+    border: solid, 2px rgb(235, 202, 67);
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    color:rgb(160, 41, 41);
+    background-color: rgb(235, 202, 67);
+}

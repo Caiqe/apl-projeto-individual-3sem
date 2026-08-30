@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import styles from "./FormularioCadastro.module.css";
 import axios from "axios";
+import loading from "../../assets/loading.gif"
 
-export function FormularioCadastro(){
+export function FormularioCadastro(props){
 
     const [generos, setGeneros] = useState([]);
 
@@ -18,6 +19,8 @@ export function FormularioCadastro(){
     const[ehUrlValido, setUrlValido] = useState(true);
     const[ehGeneroValido, setGeneroValido] = useState(true);
     
+
+    const [estaCadastrando, setEstaCadastrando] = useState(false);
 
     function atualizarEstado( set, valor){
         set(valor);
@@ -65,7 +68,9 @@ export function FormularioCadastro(){
     }
 
     function cadastrar(){
-        axios.post("http://localhost:8080/filmes", {
+        setEstaCadastrando(true);
+        setTimeout(() =>{
+            axios.post("http://localhost:8080/filmes", {
             "titulo": titulo,
             "descricao": descricao,
             "diretor": diretor,
@@ -73,11 +78,20 @@ export function FormularioCadastro(){
             "fkGenero": genero
             
         }).then(response =>{
+            setEstaCadastrando(false);
+            props.mostrarErro("")
             limparCampos()
             console.log("Cadastro com sucesso.")
         }).catch(error =>{
+            setEstaCadastrando(false);
+            if(error.response && error.response.status === 409){
+                props.mostrarErro("Já existe um filme cadastrado com esse título.")
+                console.log("Erro ao cadastrar (Filmes existente).", error);
+            }
             console.log("Erro ao cadastrar.", error);
         })
+        }, 1000)
+        
     }
 
     function limparCampos(){
@@ -108,7 +122,7 @@ export function FormularioCadastro(){
             </div>
             <div class={styles.label_input}>
                 <label htmlFor="descricao">Descrição:</label>
-                <input onChange={(event)=>{ atualizarEstado(setDescricao, event.target.value )}} value={descricao} id="descricao" placeholder="Informe uma descrição" type="text"/>
+                <input class={styles.descricao} onChange={(event)=>{ atualizarEstado(setDescricao, event.target.value )}} value={descricao} id="descricao" placeholder="Informe uma descrição" type="text"/>
                 {ehDescricaoValido ? "": <p class={styles.error_message}>A descrição deve conter entre 3 e 150 caracteres.</p>}
             </div>
             <div class={styles.label_input}>
@@ -124,7 +138,7 @@ export function FormularioCadastro(){
                 </select>
                 {ehGeneroValido ? "": <p class={styles.error_message}>Selecione um gênero válido.</p>}
             </div>
-            <button class={styles.botao} type="submit" >Cadastrar filme</button>
+            <button class={styles.botao} type="submit" >{!estaCadastrando ? "Cadastrar filme" : <img class={styles.loading} src={loading} />}</button>
         </form>
     );
 }

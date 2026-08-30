@@ -5,6 +5,7 @@ import { Header } from './comum/header/Header'
 import { Container } from './comum/container/Container'
 import { ListaFilmes } from './pages/listaFilmes/ListaFilmes'
 import { FormularioCadastro } from './components/formularioCadastro/FormularioCadastro'
+import { CadastroFilme } from './pages/cadastroFilmes/CadastroFilme'
 
 function App() {
 
@@ -13,7 +14,7 @@ function App() {
       <Header></Header>
       <Container>
         {/*<ListaFilmes></ListaFilmes>*/}
-        <FormularioCadastro></FormularioCadastro>
+        <CadastroFilme></CadastroFilme>
       </Container>
     </>
   )
