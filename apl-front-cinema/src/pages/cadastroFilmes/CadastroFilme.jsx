@@ -17,12 +17,12 @@ export function CadastroFilme(){
     },[mensagemErro, mensagemSucesso])
 
     return(
-      <main class={styles.corpo}>
-        <Link class={styles.link} to="/">{"< Filmes"}</Link>
-        <h2 class={styles.titulo}>Cadastro de filmes</h2>
+      <main className={styles.corpo}>
+        <Link className={styles.link} to="/">{"< Filmes"}</Link>
+        <h2 className={styles.titulo}>Cadastro de filmes</h2>
         <FormularioCadastro mostrarSucesso={setMensagemSucesso} mostrarErro={setMensagemErro}></FormularioCadastro>
-        {mensagemErro == "" ? "" : <p class={styles.mensagemErro}>{mensagemErro}</p>} 
-        {mensagemSucesso == "" ? "" : <p class={styles.mensagemSucesso}>{mensagemSucesso}</p>} 
+        {mensagemErro == "" ? "" : <p className={styles.mensagemErro}>{mensagemErro}</p>} 
+        {mensagemSucesso == "" ? "" : <p className={styles.mensagemSucesso}>{mensagemSucesso}</p>} 
       </main>  
     );
 }

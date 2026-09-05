@@ -71,14 +71,14 @@ export function ListaFilmes(){
 
     return (
 
-        <main class={styles.corpo}>
-            <Link class={styles.link} to="/cadastro">{ "< Cadastrar"}</Link>
+        <main className={styles.corpo}>
+            <Link className={styles.link} to="/cadastro">{ "< Cadastrar"}</Link>
             <h2>Filmes encontrados ({filmes.length}): </h2>
-            <div class={styles.secao_pesquisa}>
-                <label class={styles.label_pesquisa} htmlFor="barra_pesquisa">Buscar Títulos:</label>
-                <input id="barra_pesquisa" placeholder="Qual filme procura?" class={styles.barra_pesquisa} onChange={(event)=> {buscarFilmesPorTitulo(event.target.value)}} type="text"  />
+            <div className={styles.secao_pesquisa}>
+                <label className={styles.label_pesquisa} htmlFor="barra_pesquisa">Buscar Títulos:</label>
+                <input id="barra_pesquisa" placeholder="Qual filme procura?" className={styles.barra_pesquisa} onChange={(event)=> {buscarFilmesPorTitulo(event.target.value)}} type="text"  />
             </div>
-            <div class={styles.lista}>
+            <div className={styles.lista}>
                 { filmes.length > 0 ? 
                 filmes.map(filme => <CardFilme id={filme.idFilme} funcDeletar={abrirModal} titulo={filme.titulo} descricao={filme.descricao} autor={filme.diretor} genero={filme.genero} imagem={filme.url}></CardFilme>) 
                 : <h4>Nenhum filme encontrado...</h4>}

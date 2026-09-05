@@ -3,18 +3,18 @@ import styles from "./CardFilme.module.css";
 export function CardFilme(props){
     return (
 
-        <div class={styles.card}>
-                <h3 class={styles.titulo}>{props.titulo}</h3>
-            <div class={styles.apresentacao}>
+        <div className={styles.card}>
+                <h3 className={styles.titulo}>{props.titulo}</h3>
+            <div className={styles.apresentacao}>
                 <div>
-                    <img class={styles.capa} src={props.imagem} alt={"capa do filme - " + props.titulo} />
+                    <img className={styles.capa} src={props.imagem} alt={"capa do filme - " + props.titulo} />
                 </div>
-                <div class={styles.infos}>
+                <div className={styles.infos}>
                     <h4>Diretor: {props.autor} | Genêro: {props.genero}</h4>
                     <p>{props.descricao}</p>
                 </div>
             </div>
-            <button class={styles.bttDeletar} onClick={()=> {props.funcDeletar(props.id)}}>Deletar</button>
+            <button className={styles.bttDeletar} onClick={()=> {props.funcDeletar(props.id)}}>Deletar</button>
         </div>
     
     );

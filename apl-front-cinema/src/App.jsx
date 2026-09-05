@@ -5,7 +5,6 @@ import { Header } from './comum/header/Header'
 import { Container } from './comum/container/Container'
 import { RouterProvider } from 'react-router-dom'
 import { routes } from './routes'
-import { Navbar } from './comum/navbar/Navbar'
 
 function App() {
 

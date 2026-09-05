@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import styles from "./FormularioCadastro.module.css";
 import axios from "axios";
-import loading from "../../assets/loading.gif"
 
 export function FormularioCadastro(props){
 
@@ -111,36 +110,36 @@ export function FormularioCadastro(props){
 
     return(
 
-        <form class={styles.formulario} onSubmit={validarCampos}>
-            <div class={styles.label_input}>
+        <form className={styles.formulario} onSubmit={validarCampos}>
+            <div className={styles.label_input}>
                 <label htmlFor="titulo">Título:</label>
                 <input onChange={(event)=>{ atualizarEstado(setTitulo, event.target.value )}} value={titulo} id="titulo" placeholder="Informe o título" type="text" />
-                {ehTituloValido ? "": <p class={styles.error_message}>O título deve conter entre 3 e 100 caracteres.</p>}
+                {ehTituloValido ? "": <p className={styles.error_message}>O título deve conter entre 3 e 100 caracteres.</p>}
             </div>
-            <div class={styles.label_input}>
+            <div className={styles.label_input}>
                 <label htmlFor="autor">Diretor:</label>
                 <input onChange={(event)=>{ atualizarEstado(setDiretor, event.target.value )}} value={diretor} id="diretor" placeholder="Informe o diretor" type="text" />
-                {ehDiretorValido ? "": <p class={styles.error_message}>O diretor deve conter entre 3 e 60 caracteres.</p>}
+                {ehDiretorValido ? "": <p className={styles.error_message}>O diretor deve conter entre 3 e 60 caracteres.</p>}
             </div>
-            <div class={styles.label_input}>
+            <div className={styles.label_input}>
                 <label htmlFor="descricao">Descrição:</label>
-                <input class={styles.descricao} onChange={(event)=>{ atualizarEstado(setDescricao, event.target.value )}} value={descricao} id="descricao" placeholder="Informe uma descrição" type="text"/>
-                {ehDescricaoValido ? "": <p class={styles.error_message}>A descrição deve conter entre 3 e 150 caracteres.</p>}
+                <input className={styles.descricao} onChange={(event)=>{ atualizarEstado(setDescricao, event.target.value )}} value={descricao} id="descricao" placeholder="Informe uma descrição" type="text"/>
+                {ehDescricaoValido ? "": <p className={styles.error_message}>A descrição deve conter entre 3 e 150 caracteres.</p>}
             </div>
-            <div class={styles.label_input}>
+            <div className={styles.label_input}>
                 <label htmlFor="url">Capa do filme:</label>
                 <input onChange={(event)=>{ atualizarEstado(setUrl, event.target.value )}} value={url} id="url" placeholder="Informe o link para a imagem" type="text" />
-                {ehUrlValido ? "": <p class={styles.error_message}>O link deve conter entre 3 e 250 caracteres.</p>}
+                {ehUrlValido ? "": <p className={styles.error_message}>O link deve conter entre 3 e 250 caracteres.</p>}
             </div>
-            <div class={styles.label_input}>
+            <div className={styles.label_input}>
                 <label htmlFor="genero">Gênero:</label>
                 <select value={genero} onChange={(event)=>{ atualizarEstado(setGenero, event.target.value )}} name="genero" id="genero">
                     {generos.length < 1 ? <option value="#">Nenhum genêro encontrado</option> 
                     : generos.map(genero => <option key={genero.idGenero} value={genero.idGenero}>{genero.nome}</option>)}
                 </select>
-                {ehGeneroValido ? "": <p class={styles.error_message}>Selecione um gênero válido.</p>}
+                {ehGeneroValido ? "": <p className={styles.error_message}>Selecione um gênero válido.</p>}
             </div>
-            <button class={styles.botao} type="submit" >{!estaCadastrando ? "Cadastrar filme" : <img class={styles.loading} src={loading} />}</button>
+            <button className={styles.botao} type="submit" >{!estaCadastrando ? "Cadastrar filme" : <img className={styles.loading} src={"../../../public/loading.gif"} />}</button>
         </form>
     );
 }
